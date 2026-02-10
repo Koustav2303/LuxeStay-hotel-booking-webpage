@@ -1,5 +1,3 @@
-import { Wifi, Coffee, Utensils, Wind, Tv, Car, Dumbbell } from 'lucide-react';
-
 export const allRooms = [
   {
     id: 1,
