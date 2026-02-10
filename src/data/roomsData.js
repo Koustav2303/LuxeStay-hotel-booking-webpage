@@ -53,8 +53,8 @@ export const allRooms = [
     images: [
       "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?q=80&w=2030&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1571896349842-6e5a51335022?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1563911302283-d2bc129e7c1f?q=80&w=2070&auto=format&fit=crop",
+      "https://plus.unsplash.com/premium_photo-1738099067674-993c1a581088?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Z2FyZGVuJTIwZGVsdXhlJTIwdmlsbGElMjByb29tc3xlbnwwfHwwfHx8MA%3D%3D",
+      "https://images.unsplash.com/photo-1574197634772-f0de0d41a02e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z2FyZGVuJTIwZGVsdXhlJTIwdmlsbGElMjByb29tcyUyMGluc2lkZXxlbnwwfHwwfHx8MA%3D%3D",
       "https://images.unsplash.com/photo-1529290130-4ca3753253ae?q=80&w=2076&auto=format&fit=crop",
     ],
     amenities: ["Wifi", "Smart TV", "Mini Bar", "Garden View", "Patio"]
