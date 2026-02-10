@@ -111,7 +111,7 @@ export const allRooms = [
     size: "95 sqm",
     occupancy: "2 Adults",
     images: [
-      "https://images.unsplash.com/photo-1439066615861-d1fb8bea3f45?q=80&w=2073&auto=format&fit=crophttps://images.unsplash.com/photo-1738762827470-6caf6caee4b3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bGFnb29uJTIwYnVuZ2xvd3xlbnwwfHwwfHx8MA%3D%3D",
+      "https://images.unsplash.com/photo-1738762827470-6caf6caee4b3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bGFnb29uJTIwYnVuZ2xvd3xlbnwwfHwwfHx8MA%3D%3D",
       "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?q=80&w=1974&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=2088&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?q=80&w=2070&auto=format&fit=crop",
