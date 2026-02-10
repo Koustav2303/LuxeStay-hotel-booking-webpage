@@ -75,7 +75,7 @@ export const allRooms = [
       "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=2080&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=2070&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1484154218962-a1c002085d2f?q=80&w=2070&auto=format&fit=crop",
+      "https://plus.unsplash.com/premium_photo-1661872779873-5ce7b9235a0e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cm9vbXMlMjBpbnNkZSUyMHBlbnRob3VzZXxlbnwwfHwwfHx8MA%3D%3D",
     ],
     amenities: ["City View", "Wifi", "Butler Service", "Jacuzzi", "Kitchen", "Grand Piano"]
   },
@@ -111,7 +111,7 @@ export const allRooms = [
     size: "95 sqm",
     occupancy: "2 Adults",
     images: [
-      "https://images.unsplash.com/photo-1439066615861-d1fb8bea3f45?q=80&w=2073&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1439066615861-d1fb8bea3f45?q=80&w=2073&auto=format&fit=crophttps://images.unsplash.com/photo-1738762827470-6caf6caee4b3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bGFnb29uJTIwYnVuZ2xvd3xlbnwwfHwwfHx8MA%3D%3D",
       "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?q=80&w=1974&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=2088&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?q=80&w=2070&auto=format&fit=crop",
