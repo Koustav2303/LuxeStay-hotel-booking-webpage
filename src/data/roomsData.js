@@ -32,10 +32,10 @@ export const allRooms = [
     occupancy: "4 Adults",
     images: [
       "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1600596542815-6ad4c727dd2d?q=80&w=2075&auto=format&fit=crop",
+      "https://plus.unsplash.com/premium_photo-1764687875096-2667794f2ac5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8dmlsbGElMjByb29tc3xlbnwwfHwwfHx8MA%3D%3D",
       "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2053&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1974&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1600566753086-00f18cf6b3ea?q=80&w=2070&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1641851962761-43d3c1a34360?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bHV4dXJ5JTIwaG90ZWwlMjBpbnNpZGUlMjByb29tfGVufDB8fDB8fHww",
     ],
     amenities: ["Private Pool", "Wifi", "Kitchen", "Gym Access", "Lake View", "Fireplace"]
   },
