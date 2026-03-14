@@ -17,7 +17,7 @@ export const allExperiences = [
     price: 350,
     duration: "4 Hours",
     rating: 4.9,
-    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070&auto=format&fit=crop",
+    image: "https://plus.unsplash.com/premium_photo-1681255637027-63398674e0f1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8c3Vuc2V0JTIweWF0Y2h8ZW58MHx8MHx8fDA%3D",
     description: "Sail across the Arabian Gulf on a private 50ft yacht. Enjoy champagne, canapés, and a front-row seat to the most spectacular sunset in Dubai.",
     itinerary: ["5:00 PM - Boarding & Welcome Drinks", "6:00 PM - Sunset Views", "7:00 PM - Gourmet Dinner on Deck", "9:00 PM - Return to Harbor"]
   },
@@ -39,7 +39,7 @@ export const allExperiences = [
     price: 80,
     duration: "90 Mins",
     rating: 4.8,
-    image: "https://images.unsplash.com/photo-1544367563-12123d8966cd?q=80&w=2070&auto=format&fit=crop",
+    image: "https://plus.unsplash.com/premium_photo-1661777196224-bfda51e61cfd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8eW9nYXxlbnwwfHwwfHx8MA%3D%3D",
     description: "Restore your balance with a guided yoga session on our private beach deck as the sun rises. Includes a healthy detox breakfast post-session.",
     itinerary: ["6:00 AM - Session Start", "7:30 AM - Meditation", "8:00 AM - Detox Breakfast"]
   },
@@ -61,7 +61,7 @@ export const allExperiences = [
     price: 120,
     duration: "Late Night",
     rating: 4.9,
-    image: "https://images.unsplash.com/photo-1514525253440-b393452e8d26?q=80&w=1887&auto=format&fit=crop",
+    image: "https://plus.unsplash.com/premium_photo-1683298921068-87903c9ad47a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8amF6eiUyMG5pZ2h0fGVufDB8fDB8fHww",
     description: "Experience the city's best live jazz in our speakeasy bar. Entry includes two signature cocktails and a selection of gourmet tapas.",
     itinerary: ["9:00 PM - Doors Open", "10:00 PM - Live Band Starts", "12:00 AM - DJ Set"]
   },
@@ -72,7 +72,7 @@ export const allExperiences = [
     price: 450,
     duration: "25 Mins",
     rating: 5.0,
-    image: "https://images.unsplash.com/photo-1540962351504-03099e0a754b?q=80&w=2070&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1563561686990-f0ef5b3e0b7c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aGVsaWNvcHRlcnxlbnwwfHwwfHx8MA%3D%3D",
     description: "See the skyline from a new perspective. A thrilling helicopter ride over the Palm Jumeirah, Burj Khalifa, and the World Islands.",
     itinerary: ["Pre-flight Briefing", "25 Min Flight", "Photo Opportunity", "Return Transfer"]
   }

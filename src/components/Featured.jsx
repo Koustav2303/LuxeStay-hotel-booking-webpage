@@ -48,7 +48,7 @@ const Featured = () => {
           <div className="max-w-2xl">
             <span className="text-yellow-500 font-bold tracking-wider uppercase text-sm">Handpicked Collections</span>
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-slate-900 mt-3 leading-tight">
-              Trending Destinations <br/> for 2024
+              Trending Destinations <br/> for 2026
             </h2>
           </div>
           <button className="hidden md:flex items-center gap-3 px-6 py-3 border border-slate-200 rounded-full font-bold hover:bg-slate-900 hover:text-white transition-all group">

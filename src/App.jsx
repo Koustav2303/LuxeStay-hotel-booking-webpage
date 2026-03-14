@@ -15,7 +15,8 @@ import Experiences from './pages/Experiences';
 import Auth from './pages/Auth';
 import Profile from './pages/Profile';
 import Checkout from './pages/Checkout'; 
-import ExperienceCheckout from './pages/ExperienceCheckout'; // NEW IMPORT
+import ExperienceCheckout from './pages/ExperienceCheckout';
+import BookingDetails from './pages/BookingDetails'; // NEW BOOKING DETAILS IMPORT
 
 // Scroll to top on route change component
 const ScrollToTop = () => {
@@ -62,6 +63,11 @@ function App() {
 
         {/* Dynamic Details Pages */}
         <Route path="/hotels/:id" element={<HotelDetails />} />
+        
+        {/* The New Itinerary Route */}
+        <Route path="/booking/:id" element={
+          <> <Navbar /> <BookingDetails /> <Footer /> </>
+        } />
         
         {/* Checkout Routes */}
         <Route path="/checkout/:id" element={
