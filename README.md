@@ -1,146 +1,110 @@
-```markdown
-<div align="center">
-  
-  <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=2070&auto=format&fit=crop" alt="LuxeStay Banner" width="100%" style="border-radius: 15px; margin-bottom: 20px;" />
 
-  # 🏨 LuxeStay
-  **The Future of Luxury Hotel Booking**
+# 🏨 LuxeStay - Premium Hotel & Experience Booking Platform
 
-  A production-grade, high-performance Single Page Application (SPA) designed to provide a seamless, cinematic, and visually stunning hotel booking experience. 
+[![Live Demo](https://img.shields.io/badge/Live_Demo-View_Site-blue?style=for-the-badge&logo=github)](https://koustav2303.github.io/LuxeStay-hotel-booking-webpage/)
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](#)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](#)
+[![Framer Motion](https://img.shields.io/badge/Framer_Motion-black?style=for-the-badge&logo=framer&logoColor=blue)](#)
 
-  [![Deploy Status](https://img.shields.io/badge/Live_Demo-Online-success?style=for-the-badge&logo=github)](https://Koustav2303.github.io/LuxeStay-hotel-booking-webpage/)
-  [![React](https://img.shields.io/badge/React-19.2-blue?style=for-the-badge&logo=react)](https://reactjs.org/)
-  [![Vite](https://img.shields.io/badge/Vite-7.3-purple?style=for-the-badge&logo=vite)](https://vitejs.dev/)
-  [![Tailwind CSS](https://img.shields.io/badge/Tailwind_4.1-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
-  [![Framer Motion](https://img.shields.io/badge/Framer_Motion-black?style=for-the-badge&logo=framer)](https://www.framer.com/motion/)
-
-  [View Live Demo](https://Koustav2303.github.io/LuxeStay-hotel-booking-webpage/) • [Report Bug](#) • [Request Feature](#)
-
-</div>
+LuxeStay is a modern, high-end web application for booking luxury hotel rooms and curated travel experiences. Designed with a mobile-first, luxury-brand approach, it features smooth animations, continuous-scroll layouts, and a fully functional frontend dashboard.
 
 ---
 
-## 📸 Sneak Peek
+## 🚀 Live Preview
+**Check out the live application here:** [LuxeStay Live Site](https://koustav2303.github.io/LuxeStay-hotel-booking-webpage/)
 
-> **Tip:** *Take screenshots or record a GIF of your website and replace these placeholders to make your README even cooler!*
-
-| Home & Parallax Hero | Live Filtering & Rooms |
-| :---: | :---: |
-| <img src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?q=80&w=800&auto=format&fit=crop" width="400" style="border-radius: 10px;"/> | <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=800&auto=format&fit=crop" width="400" style="border-radius: 10px;"/> |
+*(Note: Best viewed on both Desktop and Mobile devices to experience the responsive layout!)*
 
 ---
 
-## ✨ Why LuxeStay?
+## ✨ Key Features
 
-LuxeStay isn't just a static website; it's a fully functional web application engineered with modern React patterns.
-
-### 🎨 Cinematic UI/UX
-- **Framer Motion Magic:** Silky smooth page transitions, layout animations during filtering, and expanding itinerary modals.
-- **Glassmorphism Design:** Scroll-aware navigation bars that transition from transparent to frosted glass seamlessly.
-- **Parallax Hero:** Deep, immersive home page headers with scroll-based depth-of-field effects.
-
-### 🧠 Intelligent Architecture
-- **Live Filtering Engine:** Multi-parameter filtering (Max Price, Room Type, Amenities) that updates the DOM instantly without reloads.
-- **Dynamic Routing:** Unique, shareable URLs for individual hotel rooms (e.g., `/#/hotels/1`) using `HashRouter` for flawless GitHub Pages deployment.
-- **Global Context:** A custom `AuthContext` wrapper ensures the application "remembers" you across refreshes.
-
-### 🔒 Authentication System
-- **Dual-Mode Auth:** A unified, split-screen luxury interface toggling between "Sign In" and "Sign Up".
-- **Protected Dashboards:** Private user routes that display personalized member tiers, booking history, and dynamic user avatars.
+- **Modern Authentication Flow:** Interactive Login/Signup screens with simulated authentication. User sessions are persisted using browser `localStorage`.
+- **Dynamic User Dashboard:** A continuous-scroll profile page featuring:
+  - An **Apple Wallet-style** auto-sliding credit card carousel.
+  - Interactive "Add Card" and "Delete Card" modals.
+  - A dynamic "My Trips" section that tracks confirmed and completed bookings.
+- **Global State Management:** Powered by React Context API. Bookings and cart data persist across page refreshes so users never lose their itinerary.
+- **Dynamic Routing:** Unique, dynamically generated itinerary pages for every single booking (e.g., `/booking/101`).
+- **Invoice Generation:** Users can download fully formatted `.txt` receipt invoices directly to their local device.
+- **Luxury UI/UX:** Built with Tailwind CSS and Framer Motion for buttery-smooth page transitions, glassmorphism effects, and highly polished micro-interactions.
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Category | Technology | Description |
-| :--- | :--- | :--- |
-| **Frontend** | `React 19` | UI Component Architecture |
-| **Build Tool** | `Vite` | Blazing fast HMR & Bundling |
-| **Styling** | `Tailwind CSS v4` | Utility-first CSS framework |
-| **Animations** | `Framer Motion` | Complex layout & exit animations |
-| **Routing** | `React Router v7` | Client-side Hash Routing |
-| **Icons** | `Lucide React` | Clean, modern SVG icons |
+* **Frontend Framework:** React.js (Vite)
+* **Styling:** Tailwind CSS
+* **Routing:** React Router DOM (v6)
+* **Animations:** Framer Motion
+* **Icons:** Lucide-React
+* **State Management:** React Context API + LocalStorage 
 
 ---
 
-## 🚀 Run it Locally
-
-Want to explore the code? Setting up LuxeStay is incredibly easy.
-
-```bash
-# 1. Clone the repository
-git clone [https://github.com/Koustav2303/LuxeStay-hotel-booking-webpage.git](https://github.com/Koustav2303/LuxeStay-hotel-booking-webpage.git)
-
-# 2. Navigate to the project directory
-cd LuxeStay-hotel-booking-webpage
-
-# 3. Install the dependencies
-npm install
-
-# 4. Fire up the development server
-npm run dev
-
-```
-
-> Open `http://localhost:5173` in your browser to see the magic. ✨
-
----
-
-## 📂 Project Anatomy
-
-A clean, scalable folder structure designed for easy maintenance.
+## 📂 Project Structure
 
 ```text
-hotel-luxe/
-├── 📁 public/                # Static assets & favicons
-├── 📁 src/
-│   ├── 📁 components/        # Reusable UI (Navbar, Footer, Hero)
-│   ├── 📁 context/           # Global State (AuthContext)
-│   ├── 📁 data/              # Centralized mock DB (roomsData.js)
-│   ├── 📁 pages/             # Route views (Auth, Rooms, Profile...)
-│   ├── 📄 App.jsx            # Main router and layout wrapper
-│   └── 📄 main.jsx           # App entry point
-├── 📄 vite.config.js         # Deployment paths & plugins
-├── 📄 tailwind.config.js     # Theme customization
-└── 📄 package.json           # Scripts & dependencies
+src/
+├── components/       # Reusable UI elements (Navbar, Footer, Hero, Featured)
+├── context/          # Global state management (AuthContext.js)
+├── data/             # Mock databases for Hotels, Experiences, and Rooms
+├── pages/            # Main application routes
+│   ├── Auth.jsx              # Login & Registration
+│   ├── Profile.jsx           # User Dashboard & Saved Cards
+│   ├── BookingDetails.jsx    # Dynamic Itinerary & Invoice generation
+│   ├── Checkout.jsx          # Payment flow
+│   ├── ExperienceCheckout.jsx# Dedicated checkout for experiences
+│   └── ...
+├── App.jsx           # Main router & layout configuration
+└── main.jsx          # React DOM entry point
+💻 Running the Project Locally
+To get a local copy up and running, follow these simple steps:
 
-```
+Prerequisites
+Make sure you have Node.js installed on your machine.
 
----
+npm
 
-## 🌐 Deployment Pipeline
+Bash
+npm install npm@latest -g
+Installation
+Clone the repo
 
-This application is continuously deployed to GitHub Pages. It utilizes a custom `predeploy` build script and a `base` path configuration in Vite to ensure assets load correctly on the live server.
+Bash
+git clone [https://github.com/koustav2303/LuxeStay-hotel-booking-webpage.git](https://github.com/koustav2303/LuxeStay-hotel-booking-webpage.git)
+Navigate to the project directory
 
-**To push an update to production:**
+Bash
+cd LuxeStay-hotel-booking-webpage
+Install NPM packages
 
-```bash
-git add .
-git commit -m "Your update message"
-git push origin main
-npm run deploy
+Bash
+npm install
+Start the Vite development server
 
-```
+Bash
+npm run dev
+Open http://localhost:5173 in your browser.
 
----
+🎯 Future Enhancements
+While LuxeStay is currently a frontend-focused application demonstrating UI/UX and state management, future updates may include:
 
-## 🔮 Roadmap
+Integration with a real backend (Node.js/Express or Firebase).
 
-* [ ] **Backend Integration:** Migrate from mock data to a Node.js/Express REST API.
-* [ ] **Database:** Implement MongoDB for user profiles and booking persistence.
-* [ ] **Payment Gateway:** Stripe API integration for the "Reserve Now" flow.
-* [ ] **Live Availability:** Implement `react-dates` to check real-time room capacity.
+Live payment gateway processing (Stripe API).
 
----
+Real-time availability calendars.
 
-<div align="center">
-<p>Designed and developed with 💛 by <b>Koustav Pan</b></p>
-<p>
-<a href="https://www.google.com/search?q=https://github.com/Koustav2303">GitHub Profile</a> •
-<a href="mailto:pankoustav@gmail.com">Contact Me</a>
-</p>
-</div>
+User reviews and rating system.
 
-```
+👨‍💻 Author
+Koustav Pan Frontend Developer passionate about building beautiful, interactive, and user-centric web applications.
 
-```
+GitHub: @koustav2303
+
+LinkedIn: Koustav Pan (Add your link here)
+
+Portfolio: koustav.dev (Add your link here if you have one)
+
+If you like this project, please consider giving it a ⭐ on GitHub!
