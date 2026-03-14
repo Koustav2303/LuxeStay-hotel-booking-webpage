@@ -5,26 +5,26 @@ import {
   ArrowLeft, Star, MapPin, Wifi, Coffee, Utensils, 
   Wind, Tv, Car, Dumbbell, ChevronDown, Heart, Share, Maximize 
 } from 'lucide-react';
-import { allRooms } from '../data/roomsData'; // 1. Import Data
+import { allRooms } from '../data/roomsData'; // Import Data
 
 const HotelDetails = () => {
-  const { id } = useParams(); // 2. Get ID from URL
+  const { id } = useParams(); // Get ID from URL
   const [activeTab, setActiveTab] = useState('overview');
   
-  // 3. Find the specific room
+  // Find the specific room
   const room = allRooms.find(r => r.id === parseInt(id));
 
-  // 4. Scroll to top when page opens
+  // Scroll to top when page opens
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [id]);
 
-  // 5. Handle "Room Not Found"
+  // Handle "Room Not Found"
   if (!room) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-white">
         <h2 className="text-3xl font-bold mb-4">Room not found</h2>
-        <Link to="/rooms" className="text-yellow-600 underline">Back to Rooms</Link>
+        <Link to="/rooms" className="text-yellow-600 underline font-bold">Back to Rooms</Link>
       </div>
     );
   }
@@ -131,9 +131,14 @@ const HotelDetails = () => {
               </div>
             </div>
 
-            <button className="w-full bg-slate-900 text-white font-bold py-4 rounded-xl hover:bg-yellow-600 transition-all shadow-lg mb-4">
+            {/* NEW CHECKOUT LINK BUTTON */}
+            <Link 
+              to={`/checkout/${room.id}`} 
+              className="block text-center w-full bg-slate-900 text-white font-bold py-4 rounded-xl hover:bg-yellow-600 hover:scale-[1.02] transition-all shadow-lg mb-4"
+            >
               Reserve Now
-            </button>
+            </Link>
+            
             <p className="text-center text-xs text-gray-400">You won't be charged yet</p>
           </div>
         </div>
