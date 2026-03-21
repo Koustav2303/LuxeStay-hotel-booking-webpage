@@ -4,11 +4,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
 import { 
   User, Shield, CreditCard, Settings, LogOut, MapPin, Calendar, 
-  CheckCircle, Camera, X, AlertTriangle, Wifi, Plus, Trash2, Edit, ChevronRight, Globe
+  CheckCircle, Camera, X, AlertTriangle, Wifi, Plus, Trash2, Edit, ChevronRight, Globe, Star, MessageSquare
 } from 'lucide-react';
 
 const Profile = () => {
-  const { user, logout, bookings, deleteBooking } = useAuth();
+  // PULL IN updateBooking FROM CONTEXT
+  const { user, logout, bookings, deleteBooking, updateBooking } = useAuth();
   const navigate = useNavigate();
   
   const fileInputRef = useRef(null);
@@ -35,6 +36,12 @@ const Profile = () => {
   const [newCardData, setNewCardData] = useState({ number: '', name: '', expiry: '', cvv: '' });
 
   const [bookingToDelete, setBookingToDelete] = useState(null);
+
+  // --- REVIEW SYSTEM STATES ---
+  const [bookingToReview, setBookingToReview] = useState(null);
+  const [reviewRating, setReviewRating] = useState(0);
+  const [hoverRating, setHoverRating] = useState(0);
+  const [reviewText, setReviewText] = useState('');
 
   useEffect(() => {
     if (!user) navigate('/login');
@@ -120,8 +127,23 @@ const Profile = () => {
     triggerSuccess('Trip history removed.');
   };
 
+  // --- REVIEW SUBMIT HANDLER ---
+  const handleReviewSubmit = (e) => {
+    e.preventDefault();
+    setIsSaving(true);
+    setTimeout(() => {
+      // Mark the booking as reviewed in Global State!
+      updateBooking(bookingToReview.id, { hasReviewed: true });
+      
+      setIsSaving(false);
+      setBookingToReview(null);
+      setReviewRating(0);
+      setReviewText('');
+      triggerSuccess('Thank you for your review!');
+    }, 1200);
+  };
+
   return (
-    // FIX 1: overflow-x-hidden instead of overflow-hidden prevents sideways drifting
     <div className="bg-slate-50 min-h-screen pt-24 pb-32 relative overflow-x-hidden">
       
       <AnimatePresence>
@@ -160,7 +182,6 @@ const Profile = () => {
             ) : (
               <h1 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-2 truncate">{displayName}</h1>
             )}
-            {/* FIX 2: Added break-all for extremely long email addresses on mobile */}
             <p className="text-gray-500 text-sm md:text-base break-all sm:break-normal">
               {user.email} <span className="hidden sm:inline">•</span> <br className="sm:hidden" /> Member since {user.memberSince}
             </p>
@@ -181,7 +202,6 @@ const Profile = () => {
         {/* SIDEBAR & MAIN CONTENT */}
         <div className="flex flex-col lg:flex-row gap-8 items-start">
           
-          {/* SIDEBAR NAVIGATION */}
           <div className="lg:w-64 shrink-0 w-full lg:sticky lg:top-28 z-40">
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-2 md:p-4 flex lg:flex-col overflow-x-auto gap-2 [&::-webkit-scrollbar]:hidden">
               {[
@@ -237,7 +257,8 @@ const Profile = () => {
                 
                 {bookings && bookings.length > 0 ? (
                   bookings.map((booking) => (
-                    <div key={booking.id} className="relative border-b border-gray-100 last:border-0 bg-white hover:bg-gray-50 transition-colors group">
+                    <div key={booking.id} className="relative border-b border-gray-100 last:border-0 bg-white hover:bg-gray-50 transition-colors group flex flex-col">
+                      
                       <Link 
                         to={`/booking/${booking.id}`} 
                         className="p-6 pr-16 md:pr-20 flex flex-col sm:flex-row gap-6 items-start sm:items-center w-full"
@@ -256,14 +277,33 @@ const Profile = () => {
                         </div>
                       </Link>
 
-                      <div className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 flex items-center">
+                      {/* NEW: Action Area (Review Button or Delete Button) */}
+                      <div className="px-6 pb-6 pt-0 sm:absolute sm:right-6 sm:top-1/2 sm:-translate-y-1/2 sm:p-0 flex items-center justify-end gap-2">
+                        
+                        {/* If trip is completed AND not reviewed yet, show Review Button */}
+                        {booking.status === 'Completed' && !booking.hasReviewed && (
+                          <button
+                            onClick={(e) => { e.preventDefault(); setBookingToReview(booking); }}
+                            className="bg-yellow-50 text-yellow-700 hover:bg-yellow-100 font-bold text-xs px-4 py-2 rounded-lg transition-colors flex items-center gap-2 border border-yellow-200 z-10"
+                          >
+                            <Star className="w-3.5 h-3.5" /> Leave Review
+                          </button>
+                        )}
+                        
+                        {/* If reviewed, show a badge */}
+                        {booking.status === 'Completed' && booking.hasReviewed && (
+                          <span className="text-xs font-bold text-green-600 flex items-center gap-1 bg-green-50 px-3 py-1.5 rounded-lg border border-green-100 z-10">
+                            <CheckCircle className="w-3.5 h-3.5" /> Reviewed
+                          </span>
+                        )}
+
                         {booking.status === 'Completed' ? (
                           <button
                             onClick={(e) => { e.preventDefault(); setBookingToDelete(booking.id); }}
-                            className="p-3 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-all z-10"
+                            className="p-2.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-all z-10 sm:ml-2"
                             title="Remove from history"
                           >
-                            <Trash2 className="w-5 h-5" />
+                            <Trash2 className="w-4 h-4 sm:w-5 sm:h-5" />
                           </button>
                         ) : (
                           <ChevronRight className="w-6 h-6 text-gray-400 group-hover:text-slate-900 transition-colors hidden sm:block pointer-events-none" />
@@ -296,8 +336,6 @@ const Profile = () => {
                       <motion.div 
                         key={card.id}
                         initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.5 }}
-                        // FIX 3: ADDED `overflow-hidden` so the glow effect doesn't break out
-                        // Changed width to a fixed mobile width (w-[280px]) so it doesn't cause math bugs with padding
                         className={`shrink-0 w-[280px] sm:w-[340px] aspect-[1.586/1] rounded-2xl p-5 sm:p-6 text-white relative overflow-hidden shadow-2xl bg-gradient-to-br ${card.theme} snap-center border border-white/10 flex flex-col h-full`}
                       >
                         <div className="absolute inset-0 bg-white/5 opacity-30 pointer-events-none mix-blend-overlay"></div>
@@ -435,6 +473,84 @@ const Profile = () => {
                 <button onClick={() => setBookingToDelete(null)} className="flex-1 bg-gray-100 text-slate-700 font-bold py-3 rounded-xl hover:bg-gray-200">Cancel</button>
                 <button onClick={confirmDeleteBooking} className="flex-1 bg-red-600 text-white font-bold py-3 rounded-xl hover:bg-red-700">Yes, Remove</button>
               </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* 4. NEW: Interactive Leave Review Modal */}
+      <AnimatePresence>
+        {bookingToReview && (
+          <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
+            <motion.div initial={{ opacity: 0, y: 100 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 100 }} className="bg-white rounded-3xl p-6 md:p-8 w-full max-w-md shadow-2xl">
+              <div className="flex justify-between items-center mb-6">
+                <h3 className="text-2xl font-bold text-slate-900 flex items-center gap-2">
+                  <MessageSquare className="w-6 h-6 text-yellow-600" /> Rate your trip
+                </h3>
+                <button onClick={() => { setBookingToReview(null); setReviewRating(0); setReviewText(''); }} className="text-gray-400 hover:text-slate-900">
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+
+              <div className="flex items-center gap-4 mb-6 p-4 bg-slate-50 rounded-xl border border-gray-100">
+                <img src={bookingToReview.image} className="w-16 h-16 rounded-lg object-cover" alt="Property" />
+                <div>
+                  <h4 className="font-bold text-slate-900">{bookingToReview.title}</h4>
+                  <p className="text-xs text-gray-500">{bookingToReview.dateStart}</p>
+                </div>
+              </div>
+
+              <form onSubmit={handleReviewSubmit} className="space-y-6">
+                
+                {/* 5-Star Interactive Rating */}
+                <div className="flex flex-col items-center justify-center space-y-2">
+                  <p className="text-sm font-bold text-slate-700">How was your experience?</p>
+                  <div className="flex gap-2">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <button
+                        key={star}
+                        type="button"
+                        onClick={() => setReviewRating(star)}
+                        onMouseEnter={() => setHoverRating(star)}
+                        onMouseLeave={() => setHoverRating(0)}
+                        className="transition-transform hover:scale-110 focus:outline-none"
+                      >
+                        <Star 
+                          className={`w-10 h-10 ${
+                            star <= (hoverRating || reviewRating) 
+                              ? 'fill-yellow-400 text-yellow-400 drop-shadow-sm' 
+                              : 'text-gray-300'
+                          } transition-colors`} 
+                        />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Feedback Text Area */}
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-slate-700">Share your thoughts (Optional)</label>
+                  <textarea 
+                    rows="4"
+                    value={reviewText}
+                    onChange={(e) => setReviewText(e.target.value)}
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-yellow-600 resize-none"
+                    placeholder="Tell us about the service, the views, the food..."
+                  ></textarea>
+                </div>
+
+                <button 
+                  type="submit" 
+                  disabled={isSaving || reviewRating === 0} 
+                  className={`w-full font-bold py-4 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 ${
+                    reviewRating > 0 
+                      ? 'bg-slate-900 text-white hover:bg-yellow-600' 
+                      : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                  }`}
+                >
+                  {isSaving ? <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" /> : 'Submit Review'}
+                </button>
+              </form>
             </motion.div>
           </div>
         )}

@@ -3,32 +3,25 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  
-  // 1. USER SESSION STATE (Defaults to NULL so users must log in!)
   const [user, setUser] = useState(() => {
-    // Check if a user is already saved in the browser from a previous login
     const savedUser = localStorage.getItem('luxeStayUser');
-    return savedUser ? JSON.parse(savedUser) : null; // If no user, stay logged out (null)
+    return savedUser ? JSON.parse(savedUser) : null;
   });
 
-  // Save User to Local Storage whenever they log in or log out
   useEffect(() => {
     if (user) {
       localStorage.setItem('luxeStayUser', JSON.stringify(user));
     } else {
-      localStorage.removeItem('luxeStayUser'); // Clears memory on logout
+      localStorage.removeItem('luxeStayUser');
     }
   }, [user]);
 
-
-  // 2. GLOBAL BOOKINGS STATE
   const [bookings, setBookings] = useState(() => {
     const savedBookings = localStorage.getItem('luxeStayBookings');
     if (savedBookings) {
       return JSON.parse(savedBookings);
     }
     
-    // Default mock data for the dashboard
     return [
       {
         id: "101",
@@ -50,7 +43,8 @@ export const AuthProvider = ({ children }) => {
         quantity: 3,
         taxes: 306,
         total: 2856,
-        card: "4242"
+        card: "4242",
+        hasReviewed: false // NEW FLAG
       },
       {
         id: "102",
@@ -72,29 +66,31 @@ export const AuthProvider = ({ children }) => {
         quantity: 1,
         taxes: 6.40,
         total: 86.40,
-        card: "5555"
+        card: "5555",
+        hasReviewed: false // NEW FLAG
       }
     ];
   });
 
-  // Save Bookings to Local Storage
   useEffect(() => {
     localStorage.setItem('luxeStayBookings', JSON.stringify(bookings));
   }, [bookings]);
 
-  // --- AUTHENTICATION FUNCTIONS ---
   const login = (userData) => setUser(userData);
+  const logout = () => setUser(null);
   
-  const logout = () => {
-    setUser(null); // Instantly clears the user state
-  };
-  
-  // --- BOOKING FUNCTIONS ---
   const addBooking = (newBooking) => setBookings((prevBookings) => [newBooking, ...prevBookings]);
   const deleteBooking = (bookingId) => setBookings((prevBookings) => prevBookings.filter(b => b.id !== bookingId));
+  
+  // NEW: Function to update an existing booking (like marking it as reviewed)
+  const updateBooking = (bookingId, updatedData) => {
+    setBookings((prevBookings) => 
+      prevBookings.map(b => b.id === bookingId ? { ...b, ...updatedData } : b)
+    );
+  };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, bookings, addBooking, deleteBooking }}>
+    <AuthContext.Provider value={{ user, login, logout, bookings, addBooking, deleteBooking, updateBooking }}>
       {children}
     </AuthContext.Provider>
   );

@@ -7,16 +7,25 @@ import Hero from './components/Hero';
 import Featured from './components/Featured';
 import Footer from './components/Footer';
 
-// Page Components
+// Core Page Components
 import HotelDetails from './pages/HotelDetails';
 import SearchResults from './pages/SearchResults';
 import Rooms from './pages/Rooms';
 import Experiences from './pages/Experiences';
 import Auth from './pages/Auth';
 import Profile from './pages/Profile';
+
+// Booking & Checkout Components
 import Checkout from './pages/Checkout'; 
 import ExperienceCheckout from './pages/ExperienceCheckout';
-import BookingDetails from './pages/BookingDetails'; // NEW BOOKING DETAILS IMPORT
+import BookingDetails from './pages/BookingDetails'; 
+
+// Luxury Ecosystem Pages
+import Events from './pages/Events'; 
+import Offers from './pages/Offers'; 
+import Dining from './pages/Dining'; 
+import Spa from './pages/Spa';
+import Charters from './pages/Charters';
 
 // Scroll to top on route change component
 const ScrollToTop = () => {
@@ -42,9 +51,10 @@ function App() {
     <>
       <ScrollToTop />
       <Routes>
-        {/* Main Pages */}
+        {/* Main Home Page */}
         <Route path="/" element={<Home />} />
         
+        {/* Core Navigation Pages */}
         <Route path="/rooms" element={
           <> <Navbar /> <Rooms /> <Footer /> </>
         } />
@@ -53,6 +63,28 @@ function App() {
           <> <Navbar /> <Experiences /> <Footer /> </>
         } />
 
+        {/* Luxury Ecosystem Pages */}
+        <Route path="/events" element={
+          <> <Navbar /> <Events /> <Footer /> </>
+        } />
+
+        <Route path="/offers" element={
+          <> <Navbar /> <Offers /> <Footer /> </>
+        } />
+
+        <Route path="/dining" element={
+          <> <Navbar /> <Dining /> <Footer /> </>
+        } />
+
+        <Route path="/spa" element={
+          <> <Navbar /> <Spa /> <Footer /> </>
+        } />
+
+        <Route path="/charters" element={
+          <> <Navbar /> <Charters /> <Footer /> </>
+        } />
+
+        {/* Utility Pages */}
         <Route path="/search" element={
           <> <Navbar /> <SearchResults /> <Footer /> </>
         } />
@@ -61,15 +93,14 @@ function App() {
           <> <Navbar /> <Profile /> <Footer /> </>
         } />
 
-        {/* Dynamic Details Pages */}
+        {/* Dynamic Details & Booking Pages */}
         <Route path="/hotels/:id" element={<HotelDetails />} />
         
-        {/* The New Itinerary Route */}
         <Route path="/booking/:id" element={
           <> <Navbar /> <BookingDetails /> <Footer /> </>
         } />
         
-        {/* Checkout Routes */}
+        {/* Checkout Flow Routes */}
         <Route path="/checkout/:id" element={
           <> <Navbar /> <Checkout /> <Footer /> </>
         } />
@@ -78,7 +109,7 @@ function App() {
           <> <Navbar /> <ExperienceCheckout /> <Footer /> </>
         } />
 
-        {/* Auth Route */}
+        {/* Authentication Route */}
         <Route path="/login" element={<Auth />} />
       </Routes>
     </>
