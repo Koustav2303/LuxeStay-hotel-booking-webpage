@@ -13,7 +13,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Handle scroll effect for transparent to solid background
+  // Handle scroll effect for dynamic background and text color
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
@@ -32,7 +32,6 @@ const Navbar = () => {
     navigate('/');
   };
 
-  // The complete luxury ecosystem links
   const navLinks = [
     { name: 'Rooms', path: '/rooms' },
     { name: 'Dining', path: '/dining' },
@@ -42,9 +41,16 @@ const Navbar = () => {
     { name: 'Offers', path: '/offers' },
   ];
 
+  // --- DYNAMIC STYLING LOGIC ---
+  // If scrolled (or mobile menu open): Dark Background, White Text
+  // If at top: White Background, Dark Text
+  const navbarClasses = isScrolled || isMobileMenuOpen 
+    ? 'bg-slate-900/95 backdrop-blur-md py-4 shadow-lg text-white' 
+    : 'bg-white py-6 shadow-sm text-slate-900';
+
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled || isMobileMenuOpen ? 'bg-slate-900/95 backdrop-blur-md py-4 shadow-lg' : 'bg-transparent py-6'}`}>
-      <div className="container mx-auto px-6 flex justify-between items-center text-white">
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${navbarClasses}`}>
+      <div className="container mx-auto px-6 flex justify-between items-center">
         
         {/* 1. BRAND LOGO */}
         <Link to="/" className="text-2xl font-serif font-bold tracking-wider cursor-pointer z-50">
@@ -122,7 +128,7 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="absolute top-full left-0 w-full bg-slate-900/95 backdrop-blur-xl border-t border-slate-800 lg:hidden flex flex-col pt-4 pb-8 shadow-2xl h-[calc(100vh-80px)] overflow-y-auto"
+            className="absolute top-full left-0 w-full bg-slate-900/95 backdrop-blur-xl border-t border-slate-800 lg:hidden flex flex-col pt-4 pb-8 shadow-2xl h-[calc(100vh-80px)] overflow-y-auto text-white"
           >
             <div className="flex flex-col px-6 space-y-2">
               {navLinks.map((link) => (
