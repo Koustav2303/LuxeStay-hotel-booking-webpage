@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, Users, MapPin, Phone, Mail, CheckCircle, Heart, Star, ArrowRight, Camera, Music } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 // --- MOCK DATA ---
 
@@ -182,9 +183,10 @@ const Events = () => {
                     ))}
                   </div>
 
-                  <button className="inline-flex items-center gap-2 text-slate-900 font-bold hover:text-yellow-600 transition-colors group mt-2">
+                  {/* THIS IS THE UPDATED ROUTING LINK */}
+                  <Link to="/events/floorplan" className="inline-flex items-center gap-2 text-slate-900 font-bold hover:text-yellow-600 transition-colors group mt-2">
                     View Floorplan <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </button>
+                  </Link>
                 </motion.div>
 
               </div>

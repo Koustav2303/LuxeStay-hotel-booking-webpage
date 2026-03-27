@@ -20,22 +20,26 @@ import Checkout from './pages/Checkout';
 import ExperienceCheckout from './pages/ExperienceCheckout';
 import BookingDetails from './pages/BookingDetails'; 
 
-// Luxury Ecosystem Pages
+// Events Ecosystem
 import Events from './pages/Events'; 
-import Offers from './pages/Offers'; 
+import EventFloorplan from './pages/EventFloorplan'; 
+import CustomRendering from './pages/CustomRendering'; // NEW CUSTOM RENDERING IMPORT
 
 // Charters Ecosystem
 import Charters from './pages/Charters';
-import CharterInquiry from './pages/CharterInquiry'; // NEW CHARTER INQUIRY IMPORT
+import CharterInquiry from './pages/CharterInquiry'; 
 
-// Spa Ecosystem Pages
+// Spa Ecosystem
 import Spa from './pages/Spa';
 import SpaReservation from './pages/SpaReservation'; 
 
-// Dining Ecosystem Pages
+// Dining Ecosystem
 import Dining from './pages/Dining'; 
 import DiningMenu from './pages/DiningMenu'; 
 import DiningReservation from './pages/DiningReservation'; 
+
+// Offers Page
+import Offers from './pages/Offers'; 
 
 // Scroll to top on route change component
 const ScrollToTop = () => {
@@ -73,13 +77,21 @@ function App() {
           <> <Navbar /> <Experiences /> <Footer /> </>
         } />
 
-        {/* General Luxury Pages */}
+        <Route path="/offers" element={
+          <> <Navbar /> <Offers /> <Footer /> </>
+        } />
+
+        {/* Events Ecosystem Routes */}
         <Route path="/events" element={
           <> <Navbar /> <Events /> <Footer /> </>
         } />
 
-        <Route path="/offers" element={
-          <> <Navbar /> <Offers /> <Footer /> </>
+        <Route path="/events/floorplan" element={
+          <> <Navbar /> <EventFloorplan /> <Footer /> </>
+        } />
+
+        <Route path="/events/custom-render" element={
+          <> <Navbar /> <CustomRendering /> <Footer /> </>
         } />
 
         {/* Charters Ecosystem Routes */}
