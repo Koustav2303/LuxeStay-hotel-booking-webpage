@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useEffect } from 'react';
+import { motion } from 'framer-motion';
 // Using ONLY 100% safe, universally supported core icons
-import { Plane, Anchor, Users, Navigation, Compass, MapPin, ArrowRight, CheckCircle, Calendar, Shield, Wind, Clock, Phone, Mail } from 'lucide-react';
+import { Plane, Anchor, Users, Navigation, Compass, MapPin, ArrowRight, Shield, Wind, Clock } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 // --- MOCK DATA ---
 
@@ -31,7 +32,7 @@ const fleet = [
     specs: [
       { label: "Guests", value: "10 (Overnight)", icon: <Users className="w-4 h-4" /> },
       { label: "Cruising Speed", value: "24 Knots", icon: <Wind className="w-4 h-4" /> },
-      { label: "Charter Type", value: "Day / Weekly", icon: <Calendar className="w-4 h-4" /> },
+      { label: "Charter Type", value: "Day / Weekly", icon: <Clock className="w-4 h-4" /> },
       { label: "Crew", value: "Captain + 3 Crew", icon: <Shield className="w-4 h-4" /> }
     ],
     icon: <Anchor className="w-5 h-5 text-yellow-600" />
@@ -58,38 +59,9 @@ const Charters = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // --- FORM STATE ---
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '', email: '', phone: '', charterType: 'Private Jet', passengers: '', date: '', details: ''
-  });
-
-  const handleInputChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSuccess(true);
-      setFormData({ name: '', email: '', phone: '', charterType: 'Private Jet', passengers: '', date: '', details: '' });
-      setTimeout(() => setIsSuccess(false), 5000);
-    }, 2000);
-  };
-
   return (
     <div className="bg-slate-50 min-h-screen pt-20">
       
-      {/* SUCCESS TOAST */}
-      <AnimatePresence>
-        {isSuccess && (
-          <motion.div initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -50 }} className="fixed top-24 left-1/2 -translate-x-1/2 z-[100] bg-green-900 text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-3 w-[90%] sm:w-auto justify-center font-bold">
-            <CheckCircle className="w-5 h-5 text-green-400 shrink-0" /> Charter inquiry submitted. A logistics specialist will contact you shortly.
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       {/* 1. HERO SECTION */}
       <div className="relative h-[75vh] flex items-center justify-center">
         <div className="absolute inset-0">
@@ -187,9 +159,10 @@ const Charters = () => {
                     ))}
                   </div>
 
-                  <button className="inline-flex items-center gap-2 bg-slate-900 text-white px-8 py-4 rounded-xl font-bold hover:bg-yellow-600 transition-colors shadow-lg group">
+                  {/* LINK INSTEAD OF BUTTON */}
+                  <Link to="/charters/inquire" className="inline-flex items-center gap-2 bg-slate-900 text-white px-8 py-4 rounded-xl font-bold hover:bg-yellow-600 transition-colors shadow-lg group">
                     Inquire Availability <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </button>
+                  </Link>
                 </motion.div>
 
               </div>
@@ -198,88 +171,22 @@ const Charters = () => {
         </div>
       </div>
 
-      {/* 4. EXECUTIVE CHARTER FORM */}
-      <div className="py-24 bg-slate-900 border-t border-slate-800 relative overflow-hidden text-white">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-yellow-600/10 rounded-full blur-[100px] pointer-events-none"></div>
-
-        <div className="container mx-auto px-4 md:px-6 max-w-6xl relative z-10">
-          <div className="flex flex-col lg:flex-row gap-16">
-            
-            {/* Form Info Side */}
-            <div className="lg:w-5/12">
-              <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">Logistics & Planning</h2>
-              <p className="text-gray-400 text-lg font-light leading-relaxed mb-10">
-                To guarantee your vessel or aircraft, please provide your itinerary details. Our Director of Aviation and Marine Logistics will return a comprehensive proposal within 2 hours.
-              </p>
-              
-              <div className="space-y-6">
-                <div className="flex gap-4 items-center">
-                  <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0 border border-white/5"><Phone className="w-5 h-5 text-yellow-500" /></div>
-                  <div>
-                    <h4 className="font-bold text-lg mb-1">Aviation Desk</h4>
-                    <p className="text-gray-400 font-mono">+1 (800) 555-JETS</p>
-                  </div>
-                </div>
-                <div className="flex gap-4 items-center">
-                  <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0 border border-white/5"><Mail className="w-5 h-5 text-yellow-500" /></div>
-                  <div>
-                    <h4 className="font-bold text-lg mb-1">Marine Desk</h4>
-                    <p className="text-gray-400 font-mono">charters@luxestay.com</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* The Form */}
-            <div className="lg:w-7/12">
-              <form onSubmit={handleSubmit} className="bg-white rounded-[2rem] p-8 md:p-10 shadow-2xl text-slate-900 space-y-6">
-                <h3 className="text-2xl font-bold border-b border-gray-100 pb-4 mb-6 flex items-center gap-2">
-                  <Plane className="w-6 h-6 text-yellow-600" /> Flight / Voyage Inquiry
-                </h3>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-slate-700">Lead Passenger</label>
-                    <input type="text" name="name" required value={formData.name} onChange={handleInputChange} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-yellow-600 focus:bg-white transition-all" placeholder="John Doe" />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-slate-700">Executive Email</label>
-                    <input type="email" name="email" required value={formData.email} onChange={handleInputChange} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-yellow-600 focus:bg-white transition-all" placeholder="j.doe@company.com" />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-slate-700">Asset Required</label>
-                    <select name="charterType" value={formData.charterType} onChange={handleInputChange} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-yellow-600 focus:bg-white transition-all appearance-none cursor-pointer">
-                      <option value="Private Jet">Gulfstream G650ER (Jet)</option>
-                      <option value="Helicopter">AgustaWestland AW139 (Heli)</option>
-                      <option value="Luxury Yacht">Azimut Grande 27M (Yacht)</option>
-                    </select>
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <label className="text-sm font-bold text-slate-700">Pax</label>
-                      <input type="number" name="passengers" required value={formData.passengers} onChange={handleInputChange} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-yellow-600 focus:bg-white transition-all" placeholder="e.g. 4" />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-bold text-slate-700">Date</label>
-                      <input type="date" name="date" required value={formData.date} onChange={handleInputChange} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-yellow-600 focus:bg-white transition-all text-slate-700" />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-slate-700">Itinerary & Special Requests</label>
-                  <textarea name="details" rows="3" value={formData.details} onChange={handleInputChange} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-yellow-600 focus:bg-white transition-all resize-none" placeholder="e.g. Flight routing LHR to DXB. Catering requires vegan options..."></textarea>
-                </div>
-
-                <button type="submit" disabled={isSubmitting} className="w-full bg-yellow-600 text-white font-bold text-lg py-4 rounded-xl hover:bg-slate-900 transition-colors shadow-lg flex items-center justify-center gap-2 mt-4">
-                  {isSubmitting ? <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" /> : 'Submit VIP Request'}
-                </button>
-              </form>
-            </div>
-
+      {/* 4. CLEAN CALL TO ACTION (Replaces the Form) */}
+      <div className="py-24 bg-slate-900 text-center relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-yellow-600/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="container mx-auto px-4 max-w-2xl relative z-10">
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-6">Coordinate Your Logistics</h2>
+          <p className="text-gray-400 mb-10 text-lg font-light">
+            Our Director of Aviation and Marine Logistics is standing by to prepare a comprehensive proposal for your next journey.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            {/* LINK INSTEAD OF BUTTON */}
+            <Link to="/charters/inquire" className="bg-yellow-600 text-slate-900 font-bold px-8 py-4 rounded-xl hover:bg-yellow-500 transition-colors shadow-xl inline-block">
+              Request Charter Manifest
+            </Link>
+            <button className="bg-white/10 text-white border border-white/20 font-bold px-8 py-4 rounded-xl hover:bg-white/20 transition-colors backdrop-blur-sm">
+              Call Marine Desk
+            </button>
           </div>
         </div>
       </div>

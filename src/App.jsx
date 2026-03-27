@@ -23,8 +23,14 @@ import BookingDetails from './pages/BookingDetails';
 // Luxury Ecosystem Pages
 import Events from './pages/Events'; 
 import Offers from './pages/Offers'; 
-import Spa from './pages/Spa';
+
+// Charters Ecosystem
 import Charters from './pages/Charters';
+import CharterInquiry from './pages/CharterInquiry'; // NEW CHARTER INQUIRY IMPORT
+
+// Spa Ecosystem Pages
+import Spa from './pages/Spa';
+import SpaReservation from './pages/SpaReservation'; 
 
 // Dining Ecosystem Pages
 import Dining from './pages/Dining'; 
@@ -67,7 +73,7 @@ function App() {
           <> <Navbar /> <Experiences /> <Footer /> </>
         } />
 
-        {/* Luxury Ecosystem Pages */}
+        {/* General Luxury Pages */}
         <Route path="/events" element={
           <> <Navbar /> <Events /> <Footer /> </>
         } />
@@ -76,12 +82,22 @@ function App() {
           <> <Navbar /> <Offers /> <Footer /> </>
         } />
 
+        {/* Charters Ecosystem Routes */}
+        <Route path="/charters" element={
+          <> <Navbar /> <Charters /> <Footer /> </>
+        } />
+
+        <Route path="/charters/inquire" element={
+          <> <Navbar /> <CharterInquiry /> <Footer /> </>
+        } />
+
+        {/* Spa Ecosystem Routes */}
         <Route path="/spa" element={
           <> <Navbar /> <Spa /> <Footer /> </>
         } />
 
-        <Route path="/charters" element={
-          <> <Navbar /> <Charters /> <Footer /> </>
+        <Route path="/spa/reserve" element={
+          <> <Navbar /> <SpaReservation /> <Footer /> </>
         } />
 
         {/* Dining Ecosystem Routes */}

@@ -194,9 +194,10 @@ const Spa = () => {
                     </div>
                   </div>
 
-                  <button className="inline-flex items-center gap-2 bg-slate-100 px-6 py-3 rounded-xl text-slate-900 font-bold hover:bg-yellow-600 hover:text-white transition-colors group mt-2">
+                  {/* LINK UPDATED HERE */}
+                  <Link to="/spa/reserve" className="inline-flex items-center gap-2 bg-slate-100 px-6 py-3 rounded-xl text-slate-900 font-bold hover:bg-yellow-600 hover:text-white transition-colors group mt-2">
                     Request Booking <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </button>
+                  </Link>
                 </motion.div>
 
               </div>
@@ -245,9 +246,10 @@ const Spa = () => {
             Our Spa Concierge is available to help you design the perfect day of relaxation. Advance reservations are highly recommended.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-yellow-600 text-white font-bold px-8 py-4 rounded-xl hover:bg-yellow-500 transition-colors shadow-xl">
-              View Full Menu
-            </button>
+            {/* LINK UPDATED HERE */}
+            <Link to="/spa/reserve" className="bg-yellow-600 text-white font-bold px-8 py-4 rounded-xl hover:bg-yellow-500 transition-colors shadow-xl inline-block">
+              Book a Treatment
+            </Link>
             <button className="bg-white/10 text-white border border-white/20 font-bold px-8 py-4 rounded-xl hover:bg-white/20 transition-colors backdrop-blur-sm">
               Contact Concierge
             </button>
