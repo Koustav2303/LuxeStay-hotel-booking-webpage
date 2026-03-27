@@ -23,9 +23,13 @@ import BookingDetails from './pages/BookingDetails';
 // Luxury Ecosystem Pages
 import Events from './pages/Events'; 
 import Offers from './pages/Offers'; 
-import Dining from './pages/Dining'; 
 import Spa from './pages/Spa';
 import Charters from './pages/Charters';
+
+// Dining Ecosystem Pages
+import Dining from './pages/Dining'; 
+import DiningMenu from './pages/DiningMenu'; 
+import DiningReservation from './pages/DiningReservation'; 
 
 // Scroll to top on route change component
 const ScrollToTop = () => {
@@ -72,16 +76,25 @@ function App() {
           <> <Navbar /> <Offers /> <Footer /> </>
         } />
 
-        <Route path="/dining" element={
-          <> <Navbar /> <Dining /> <Footer /> </>
-        } />
-
         <Route path="/spa" element={
           <> <Navbar /> <Spa /> <Footer /> </>
         } />
 
         <Route path="/charters" element={
           <> <Navbar /> <Charters /> <Footer /> </>
+        } />
+
+        {/* Dining Ecosystem Routes */}
+        <Route path="/dining" element={
+          <> <Navbar /> <Dining /> <Footer /> </>
+        } />
+
+        <Route path="/dining/menu" element={
+          <> <Navbar /> <DiningMenu /> <Footer /> </>
+        } />
+
+        <Route path="/dining/reserve" element={
+          <> <Navbar /> <DiningReservation /> <Footer /> </>
         } />
 
         {/* Utility Pages */}

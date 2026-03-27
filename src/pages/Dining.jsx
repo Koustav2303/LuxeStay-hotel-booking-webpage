@@ -168,9 +168,10 @@ const Dining = () => {
                     </div>
                   </div>
 
-                  <button className="inline-flex items-center gap-2 text-slate-900 font-bold hover:text-yellow-600 transition-colors group mt-2">
+                  {/* LINK UPDATED HERE */}
+                  <Link to="/dining/menu" className="inline-flex items-center gap-2 text-slate-900 font-bold hover:text-yellow-600 transition-colors group mt-2">
                     View Full Menu <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </button>
+                  </Link>
                 </motion.div>
 
               </div>
@@ -219,9 +220,9 @@ const Dining = () => {
             Our most sought-after venues book up weeks in advance. Secure your culinary experience today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-slate-900 text-white font-bold px-8 py-4 rounded-xl hover:bg-yellow-600 transition-colors shadow-xl">
+            <Link to="/events" className="bg-slate-900 text-white font-bold px-8 py-4 rounded-xl hover:bg-yellow-600 transition-colors shadow-xl inline-block">
               Book a Reservation
-            </button>
+            </Link>
             <button className="bg-gray-100 text-slate-900 font-bold px-8 py-4 rounded-xl hover:bg-gray-200 transition-colors">
               Contact Concierge
             </button>
