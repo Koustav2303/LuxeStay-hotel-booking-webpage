@@ -1,29 +1,43 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Twitter, Youtube, MapPin, Phone, Mail, ArrowRight } from 'lucide-react';
+import { 
+  Facebook, 
+  Instagram, 
+  Twitter, 
+  Youtube, 
+  MapPin, 
+  Phone, 
+  Mail, 
+  ArrowRight, 
+  ArrowUp 
+} from 'lucide-react';
 
 const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <footer className="bg-slate-900 text-white pt-20 pb-8 border-t border-slate-800">
+    <footer className="bg-slate-900 text-white pt-20 pb-8 border-t border-slate-800 relative">
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         
         {/* TOP SECTION: Newsletter */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-8 pb-16 border-b border-slate-800">
           <div className="md:w-1/2 text-center md:text-left">
-            <h3 className="text-3xl font-serif font-bold mb-3">Join the Luxe List</h3>
+            <h3 className="text-3xl font-serif font-bold mb-3 tracking-tight">Join the Luxe List</h3>
             <p className="text-gray-400 font-light">Subscribe to receive exclusive offers, private charter updates, and early access to our curated experiences.</p>
           </div>
           <div className="w-full md:w-1/2 max-w-md">
-            <form className="relative flex items-center">
+            <form className="relative flex items-center group" onSubmit={(e) => e.preventDefault()}>
               <input 
                 type="email" 
                 placeholder="Enter your email address" 
-                className="w-full bg-white/5 border border-white/10 rounded-full py-4 pl-6 pr-16 text-white outline-none focus:border-yellow-500 transition-colors"
+                className="w-full bg-white/5 border border-white/10 rounded-full py-4 pl-6 pr-16 text-white outline-none focus:border-yellow-500/50 focus:bg-white/10 transition-all placeholder:text-gray-600" 
                 required
               />
               <button 
                 type="submit" 
-                className="absolute right-2 w-10 h-10 bg-yellow-600 rounded-full flex items-center justify-center hover:bg-yellow-500 transition-colors"
+                className="absolute right-2 w-10 h-10 bg-yellow-600 rounded-full flex items-center justify-center hover:bg-yellow-500 transition-all shadow-lg group-hover:scale-105"
               >
                 <ArrowRight className="w-5 h-5 text-slate-900" />
               </button>
@@ -43,16 +57,24 @@ const Footer = () => {
               Redefining luxury hospitality. From sky-high dining to private aviation, experience a world where your every desire is anticipated.
             </p>
             <div className="flex items-center gap-4 pt-2">
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-yellow-600 hover:text-slate-900 transition-all text-gray-400"><Instagram className="w-4 h-4" /></a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-yellow-600 hover:text-slate-900 transition-all text-gray-400"><Facebook className="w-4 h-4" /></a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-yellow-600 hover:text-slate-900 transition-all text-gray-400"><Twitter className="w-4 h-4" /></a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-yellow-600 hover:text-slate-900 transition-all text-gray-400"><Youtube className="w-4 h-4" /></a>
+              <a href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/5 flex items-center justify-center hover:bg-yellow-600 hover:text-slate-900 hover:border-yellow-600 transition-all text-gray-400 group">
+                <Instagram className="w-4 h-4 group-hover:scale-110 transition-transform" />
+              </a>
+              <a href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/5 flex items-center justify-center hover:bg-yellow-600 hover:text-slate-900 hover:border-yellow-600 transition-all text-gray-400 group">
+                <Facebook className="w-4 h-4 group-hover:scale-110 transition-transform" />
+              </a>
+              <a href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/5 flex items-center justify-center hover:bg-yellow-600 hover:text-slate-900 hover:border-yellow-600 transition-all text-gray-400 group">
+                <Twitter className="w-4 h-4 group-hover:scale-110 transition-transform" />
+              </a>
+              <a href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/5 flex items-center justify-center hover:bg-yellow-600 hover:text-slate-900 hover:border-yellow-600 transition-all text-gray-400 group">
+                <Youtube className="w-4 h-4 group-hover:scale-110 transition-transform" />
+              </a>
             </div>
           </div>
 
           {/* Explore Col */}
           <div>
-            <h4 className="text-lg font-bold mb-6 font-serif tracking-wide">Explore</h4>
+            <h4 className="text-sm font-bold mb-6 font-serif tracking-[0.2em] uppercase text-gray-500">Explore</h4>
             <ul className="space-y-4 text-sm text-gray-400">
               <li><Link to="/rooms" className="hover:text-yellow-500 transition-colors">Rooms & Suites</Link></li>
               <li><Link to="/experiences" className="hover:text-yellow-500 transition-colors">Curated Experiences</Link></li>
@@ -64,23 +86,23 @@ const Footer = () => {
 
           {/* Services Col */}
           <div>
-            <h4 className="text-lg font-bold mb-6 font-serif tracking-wide">Luxury Services</h4>
+            <h4 className="text-sm font-bold mb-6 font-serif tracking-[0.2em] uppercase text-gray-500">Luxury Services</h4>
             <ul className="space-y-4 text-sm text-gray-400">
               <li><Link to="/dining" className="hover:text-yellow-500 transition-colors">Fine Dining</Link></li>
               <li><Link to="/spa" className="hover:text-yellow-500 transition-colors">Spa & Wellness</Link></li>
               <li><Link to="/charters" className="hover:text-yellow-500 transition-colors">Yachts & Aviation</Link></li>
               <li><Link to="/events" className="hover:text-yellow-500 transition-colors">Weddings & Galas</Link></li>
-              <li><Link to="/charters" className="hover:text-yellow-500 transition-colors">Airport Transfers</Link></li>
+              <li><Link to="/transfer" className="hover:text-yellow-500 transition-colors">Airport Transfers</Link></li>
             </ul>
           </div>
 
           {/* Contact Col */}
           <div>
-            <h4 className="text-lg font-bold mb-6 font-serif tracking-wide">Contact Us</h4>
+            <h4 className="text-sm font-bold mb-6 font-serif tracking-[0.2em] uppercase text-gray-500">Contact Us</h4>
             <ul className="space-y-4 text-sm text-gray-400">
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-yellow-600 shrink-0" />
-                <span>100 Luxury Way, Palm Jumeirah<br/>Dubai, UAE 00000</span>
+                <span className="leading-relaxed">100 Luxury Way, Palm Jumeirah<br/>Dubai, UAE 00000</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-yellow-600 shrink-0" />
@@ -92,22 +114,31 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-
         </div>
 
         {/* BOTTOM BAR: Copyright & Developer Credit */}
-        <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+        <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-gray-500">
           <p>© {new Date().getFullYear()} LuxeStay Resorts & Hotels. All rights reserved.</p>
           
           <div className="flex gap-6">
-            <Link to="/" className="hover:text-yellow-500 transition-colors">Privacy Policy</Link>
-            <Link to="/" className="hover:text-yellow-500 transition-colors">Terms of Service</Link>
-            <Link to="/" className="hover:text-yellow-500 transition-colors">Sitemap</Link>
+            <Link to="/privacy" className="hover:text-yellow-500 transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-yellow-500 transition-colors">Terms of Service</Link>
+            <Link to="#" className="hover:text-yellow-500 transition-colors">Sitemap</Link>
           </div>
           
-          <p className="font-medium">
-            Designed & Built by <a href="https://github.com/koustav2303" target="_blank" rel="noreferrer" className="text-yellow-600 hover:text-yellow-500 transition-colors">Koustav Pan</a>
-          </p>
+          <div className="flex items-center gap-4">
+            <p className="font-medium">
+              Designed & Built by <a href="https://github.com/koustav2303" target="_blank" rel="noreferrer" className="text-yellow-600 hover:text-yellow-500 transition-colors">Koustav Pan</a>
+            </p>
+            {/* Back to top button */}
+            <button 
+              onClick={scrollToTop}
+              className="bg-white/5 hover:bg-yellow-600 hover:text-slate-900 p-2 rounded-full transition-all border border-white/5"
+              aria-label="Back to top"
+            >
+              <ArrowUp className="w-4 h-4" />
+            </button>
+          </div>
         </div>
 
       </div>
