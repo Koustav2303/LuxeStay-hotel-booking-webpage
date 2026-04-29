@@ -13,10 +13,13 @@ import Profile from './pages/Profile';
 import SearchResults from './pages/SearchResults';
 import Offers from './pages/Offers'; 
 import Policy from './pages/Policy'; // Renamed to bypass ad-blockers
-import Terms from './pages/Terms';   // New Terms of Service page
+import Terms from './pages/Terms';   // Terms of Service page
 
 // --- LAZY LOADED ECOSYSTEMS (Code Splitting for Performance) ---
 // By lazy loading these heavy components, we ensure the initial JavaScript bundle is tiny.
+
+// Offers Details (NEW)
+const OfferDetails = lazy(() => import('./pages/OfferDetails'));
 
 // Core Stays & Experiences
 const Rooms = lazy(() => import('./pages/Rooms'));
@@ -97,8 +100,13 @@ function App() {
           <Route path="/search" element={
             <> <Navbar /> <SearchResults /> <Footer /> </>
           } />
+          
+          {/* Offers Ecosystem */}
           <Route path="/offers" element={
             <> <Navbar /> <Offers /> <Footer /> </>
+          } />
+          <Route path="/offers/:id" element={
+            <> <Navbar /> <OfferDetails /> <Footer /> </>
           } />
           
           {/* Legal Routes */}

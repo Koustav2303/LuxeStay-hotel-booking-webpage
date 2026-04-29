@@ -2,54 +2,7 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Tag, Clock, Sparkles, ArrowRight, Gift, Calendar as CalendarIcon } from 'lucide-react';
-
-// Mock Data for Exclusive Offers
-const offersData = [
-  {
-    id: 1,
-    title: "The Ultimate Honeymoon Escape",
-    category: "Romance",
-    image: "https://d2e5ushqwiltxm.cloudfront.net/wp-content/uploads/sites/168/2025/05/28061910/Honeymoon-Escapade_shutterstock_1881529978.jpg",
-    description: "Celebrate your love with a complimentary room upgrade, a romantic 5-course beachfront dinner, and a couples' spa retreat.",
-    originalPrice: 3500,
-    offerPrice: 2800,
-    validUntil: "Dec 31, 2026",
-    badge: "Most Popular"
-  },
-  {
-    id: 2,
-    title: "Weekend Wellness Retreat",
-    category: "Spa & Wellness",
-    image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2070&auto=format&fit=crop",
-    description: "Rejuvenate your mind and body. Includes a 2-night stay, daily detox breakfast, and unlimited access to our thermal baths and yoga sessions.",
-    originalPrice: 1800,
-    offerPrice: 1250,
-    validUntil: "Nov 15, 2026",
-    badge: "Limited Time"
-  },
-  {
-    id: 3,
-    title: "Advance Purchase Special",
-    category: "Rooms & Suites",
-    image: "https://idobridalcouture.com/cdn/shop/articles/maxresdefault-930387.jpg?v=1684433550",
-    description: "Plan ahead and enjoy up to 25% off our Best Available Rate when you book your luxury suite at least 60 days in advance.",
-    originalPrice: 1000,
-    offerPrice: 750,
-    validUntil: "Ongoing",
-    badge: "Save 25%"
-  },
-  {
-    id: 4,
-    title: "The Culinary Journey",
-    category: "Fine Dining",
-    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070&auto=format&fit=crop",
-    description: "A feast for the senses. Enjoy a 3-night stay combined with an exclusive tasting menu curated by our Michelin-starred Executive Chef.",
-    originalPrice: 4200,
-    offerPrice: 3600,
-    validUntil: "Oct 30, 2026",
-    badge: "Exclusive"
-  }
-];
+import { offersData } from '../data/offersData'; // Import the data!
 
 const Offers = () => {
   useEffect(() => {
@@ -61,7 +14,6 @@ const Offers = () => {
       
       {/* HEADER SECTION */}
       <div className="bg-slate-900 text-white py-20 relative overflow-hidden">
-        {/* Decorative Background Blobs */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-600/20 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2"></div>
         
@@ -134,9 +86,9 @@ const Offers = () => {
                   </div>
                 </div>
 
-                {/* Call to Action */}
-                <Link to="/rooms" className="w-full bg-slate-900 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-yellow-600 transition-colors group/btn">
-                  Claim Offer <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
+                {/* DYNAMIC CALL TO ACTION */}
+                <Link to={`/offers/${offer.id}`} className="w-full bg-slate-900 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-yellow-600 hover:text-slate-900 transition-colors group/btn">
+                  View Offer Details <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </motion.div>
