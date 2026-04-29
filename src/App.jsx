@@ -50,6 +50,8 @@ const Dining = lazy(() => import('./pages/Dining'));
 const DiningMenu = lazy(() => import('./pages/DiningMenu')); 
 const DiningReservation = lazy(() => import('./pages/DiningReservation')); 
 
+const Sitemap = lazy(() => import('./pages/Sitemap'));
+
 // --- SCROLL TO TOP UTILITY ---
 // Ensures that every time a user clicks a link, the new page starts at the very top.
 const ScrollToTop = () => {
@@ -181,6 +183,10 @@ function App() {
           } />
           <Route path="/experience-checkout/:id" element={
             <> <Navbar /> <ExperienceCheckout /> <Footer /> </>
+          } />
+
+          <Route path="/sitemap" element={
+            <> <Navbar /> <Sitemap /> <Footer /> </>
           } />
 
         </Routes>

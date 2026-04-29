@@ -123,7 +123,7 @@ const Footer = () => {
           <div className="flex gap-6">
             <Link to="/privacy" className="hover:text-yellow-500 transition-colors">Privacy Policy</Link>
             <Link to="/terms" className="hover:text-yellow-500 transition-colors">Terms of Service</Link>
-            <Link to="#" className="hover:text-yellow-500 transition-colors">Sitemap</Link>
+            <Link to="/sitemap" className="hover:text-yellow-500 transition-colors">Sitemap</Link>
           </div>
           
           <div className="flex items-center gap-4">
